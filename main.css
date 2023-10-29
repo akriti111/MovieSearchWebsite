@@ -1,0 +1,84 @@
+/* Dark-themed background and text */
+body {
+    background-color: #121212;
+    color: #fff;
+}
+
+/* Container styling */
+.container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Title styling */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* Input and button styling */
+#search {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    margin-right: 10px;
+    width: 70%;
+}
+
+#searchButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 28%;
+}
+
+#searchButton:hover {
+    background-color: #0056b3;
+}
+
+/* Movie results styling */
+.results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.movie {
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    width: 220px;
+}
+
+.movie h2 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.movie img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    #search {
+        width: 100%;
+    }
+
+    #searchButton {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+

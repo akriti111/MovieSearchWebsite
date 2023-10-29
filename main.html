@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Search</h1>
+        <input type="text" id="search" placeholder="Enter a movie title">
+        <button id="searchButton">Search</button>
+    </div>
+    <div class="results">
+        <!-- Movie results will be displayed here -->
+    </div>
+
+    <script>
+        // JavaScript code to fetch movie data from the OMDB API
+
+        const apiKey = 'YOUR_OMDB_API_KEY'; // Replace with your actual API key
+        const searchButton = document.getElementById('searchButton');
+        const searchInput = document.getElementById('search');
+        const resultsDiv = document.querySelector('.results');
+
+        searchButton.addEventListener('click', () => {
+            const searchQuery = searchInput.value;
+
+            if (searchQuery) {
+                fetch(`https://www.omdbapi.com/?s=${searchQuery}&apikey=1baff035`)
+                    .then(response => response.json())
+                    .then(data => {
+                        displayResults(data.Search);
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        });
+
+        function displayResults(movies) {
+            resultsDiv.innerHTML = '';
+
+            if (!movies) {
+                resultsDiv.innerHTML = '<p>No results found</p>';
+                return;
+            }
+
+            movies.forEach(movie => {
+                const movieDiv = document.createElement('div');
+                movieDiv.classList.add('movie');
+
+                const title = movie.Title;
+                const year = movie.Year;
+                const poster = movie.Poster;
+
+                movieDiv.innerHTML = `
+                    <h2>${title} (${year})</h2>
+                    <img src="${poster}" alt="${title} Poster">
+                `;
+
+                resultsDiv.appendChild(movieDiv);
+            });
+        }
+    </script>
+</body>
+</html>
